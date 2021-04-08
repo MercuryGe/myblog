@@ -20,7 +20,6 @@
   </properties>
 
   <dependencies>
-
     <!-- 引入JSON依赖 -->
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
     <dependency>
@@ -28,8 +27,6 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.12.1</version>
     </dependency>
-
-
     <!-- 引入mysql依赖 -->
     <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
     <dependency>
@@ -37,9 +34,6 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.48</version>
     </dependency>
-
-
-
     <!-- 引入Servlet依赖 -->
     <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
     <dependency>
@@ -48,9 +42,6 @@
       <version>3.1.0</version>
       <scope>provided</scope>
     </dependency>
-
-
-
     <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
     <dependency>
       <groupId>javax.servlet</groupId>

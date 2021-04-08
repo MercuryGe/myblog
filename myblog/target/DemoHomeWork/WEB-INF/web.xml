@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"
-         metadata-complete="true">
+         metadata-complete="false">
 
   <!-- 测试接口 -->
   <servlet>
@@ -44,6 +44,16 @@
   <servlet-mapping>
     <servlet-name>myartlist</servlet-name>
     <url-pattern>/myartlist</url-pattern>
+  </servlet-mapping>
+
+  <!-- 查询文章详情接口 -->
+  <servlet>
+    <servlet-name>init</servlet-name>
+    <servlet-class>services.InitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>init</servlet-name>
+    <url-pattern>/init</url-pattern>
   </servlet-mapping>
 
 

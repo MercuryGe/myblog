@@ -3,6 +3,7 @@ package dao;
 import models.ArticleInfo;
 import utils.DBUtils;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,5 +35,61 @@ public class ArticleInfoDao {
         return list;
     }
 
+    // 删除文章操作
+    public int del(int id) throws SQLException {
+        int result = 0;
+        Connection connection = DBUtils.getConnection();
+        String sql = "delete from articleinfo where id=?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1,id);
+        result = statement.executeUpdate();
+        DBUtils.close(connection,statement,null);
+        return result;
+    }
 
+    public ArticleInfo getArtById(int id) throws SQLException {
+        ArticleInfo articleInfo = new ArticleInfo();
+        if(id > 0){
+            Connection connection = DBUtils.getConnection();
+            String sql = "select * from articleinfo where id=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1,id);
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                articleInfo.setTitle(resultSet.getString("title"));
+                articleInfo.setContent(resultSet.getString("content"));
+                articleInfo.setId(resultSet.getInt("id"));
+            }
+            DBUtils.close(connection,statement,resultSet);
+        }
+        return articleInfo;
+    }
+
+    // 修改文章内容
+    public int upArt(int id, String title, String content) throws SQLException {
+        int result = 0;
+        Connection connection = DBUtils.getConnection();
+        String sql = "update articleinfo set title=?,content=? where id=?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1,title);
+        statement.setString(2,content);
+        statement.setInt(3,id);
+        result = statement.executeUpdate();
+        DBUtils.close(connection,statement,null);
+        return result;
+    }
+
+    // 文章新增
+    public int add(String title, String content, int id) throws SQLException {
+        int result = 0;
+        Connection connection = DBUtils.getConnection();
+        String sql = "insert into articleinfo(title,content,uid) values(?,?,?)";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, title);
+        statement.setString(2, content);
+        statement.setInt(3, id);
+        result = statement.executeUpdate();
+        DBUtils.close(connection, statement, null);
+        return result;
+    }
 }
