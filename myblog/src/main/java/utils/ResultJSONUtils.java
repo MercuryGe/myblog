@@ -12,6 +12,7 @@ public class ResultJSONUtils {
                              HashMap<String, Object> data) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json");
+
         PrintWriter writer = response.getWriter();
         ObjectMapper mapper = new ObjectMapper();
         writer.println(mapper.writeValueAsString(data));

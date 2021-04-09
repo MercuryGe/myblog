@@ -2,6 +2,7 @@ package services;
 
 import dao.ArticleInfoDao;
 import models.ArticleInfo;
+import models.vo.ArticleInfoVO;
 import utils.ResultJSONUtils;
 
 import javax.servlet.ServletException;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
-
 public class InitServlet extends HttpServlet {
 
     @Override
@@ -25,7 +25,7 @@ public class InitServlet extends HttpServlet {
         int succ = -1;
         String msg = "";
         // 因为要返回文章的信息，所以后端类要建立一个文章信息类，以供返回给前端内容
-        ArticleInfo articleInfo = null;
+        ArticleInfoVO articleInfo = null;
 
         // 1、从前端获取参数
         int id = Integer.parseInt(request.getParameter("id"));
